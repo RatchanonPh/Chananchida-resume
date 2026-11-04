@@ -1,345 +1,723 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Google Fonts: Kanit & Sarabun -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#2563eb',
-                            600: '#1d4ed8',
-                            700: '#1e40af',
-                            800: '#1e3a8a',
-                            900: '#0f172a',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Sarabun', 'sans-serif'],
-                        heading: ['Kanit', 'sans-serif'],
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#f0f7ff",
+                100: "#e0effe",
+                500: "#2563eb",
+                600: "#1d4ed8",
+                700: "#1e40af",
+                800: "#1e3a8a",
+                900: "#0f172a",
+              },
+            },
+            fontFamily: {
+              sans: ["Sarabun", "sans-serif"],
+              heading: ["Kanit", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
 
     <style>
+      body {
+        font-family: "Sarabun", sans-serif;
+        background-color: #f1f5f9;
+        color: #334155;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-heading {
+        font-family: "Kanit", sans-serif;
+      }
+
+      /* Printing optimizations */
+      @media print {
         body {
-            font-family: 'Sarabun', sans-serif;
-            background-color: #f1f5f9;
-            color: #334155;
+          background-color: #ffffff !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          color: #000000 !important;
         }
+        .no-print {
+          display: none !important;
+        }
+        .print-container {
+          box-shadow: none !important;
+          max-width: 100% !important;
+          width: 100% !important;
+          margin: 0 !important;
+          border: none !important;
+          border-radius: 0 !important;
+        }
+        .page-break {
+          page-break-inside: avoid;
+        }
+        @page {
+          size: A4 portrait;
+          margin: 12mm;
+        }
+        /* Ensure background colors print properly */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+      }
 
-        h1, h2, h3, h4, .font-heading {
-            font-family: 'Kanit', sans-serif;
-        }
-
-        /* Printing optimizations */
-        @media print {
-            body {
-                background-color: #ffffff !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                color: #000000 !important;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .print-container {
-                box-shadow: none !important;
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 !important;
-                border: none !important;
-                border-radius: 0 !important;
-            }
-            .page-break {
-                page-break-inside: avoid;
-            }
-            @page {
-                size: A4 portrait;
-                margin: 12mm;
-            }
-            /* Ensure background colors print properly */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-        }
-
-        .gradient-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
+      .gradient-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
     </style>
-</head>
-<body class="py-6 md:py-10 px-3 sm:px-6">
-
+  </head>
+  <body class="py-6 md:py-10 px-3 sm:px-6">
     <!-- Resume Main Container (A4 Aspect Ratio Friendly) -->
-    <main class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200/80 print-container">
-        
-        <!-- Header Banner -->
-        <header class="gradient-header text-white p-6 sm:p-8">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <div>
-                    <h1 class="text-3xl sm:text-4xl font-bold tracking-wide">ชนัญชิดา แก้วเขียว</h1>
-                    <p class="text-blue-100 text-lg font-light mt-1 font-heading">Chananchida Keaokhiao</p>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Content Layout Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-            
-            <!-- LEFT COLUMN / SIDEBAR (4 Cols) -->
-            <aside class="md:col-span-4 bg-slate-50/70 p-6 space-y-6">
-                
-                <!-- Contact Info -->
-                <section class="space-y-3">
-                    <h2 class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-address-book text-brand-600"></i> ข้อมูลการติดต่อ
-                    </h2>
-                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-phone text-brand-600 mt-1 w-4"></i>
-                            <a href="tel:0990151407" class="hover:text-brand-600 transition">099-015-1407</a>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-envelope text-brand-600 mt-1 w-4"></i>
-                            <a href="mailto:Chananchidaplam1@gmail.com" class="hover:text-brand-600 break-all transition">Chananchidaplam1@gmail.com</a>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-location-dot text-brand-600 mt-1 w-4"></i>
-                            <span>98/18 หมู่ 5 ต.พลายชุมพล อ.เมืองพิษณุโลก จ.พิษณุโลก 65000</span>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Personal Details -->
-                <section class="space-y-3 page-break">
-                    <h2 class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-user text-brand-600"></i> ข้อมูลส่วนตัว
-                    </h2>
-                    <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
-                        <div class="bg-white p-2 rounded border border-slate-200/60">
-                            <span class="text-slate-400 block text-[11px]">วันเกิด</span>
-                            <span class="font-medium text-slate-700">22 ต.ค. 2545</span>
-                        </div>
-                        <div class="bg-white p-2 rounded border border-slate-200/60">
-                            <span class="text-slate-400 block text-[11px]">อายุ</span>
-                            <span class="font-medium text-slate-700">24 ปี</span>
-                        </div>
-                        <div class="bg-white p-2 rounded border border-slate-200/60">
-                            <span class="text-slate-400 block text-[11px]">สัญชาติ / ศาสนา</span>
-                            <span class="font-medium text-slate-700">ไทย / พุทธ</span>
-                        </div>
-                        <div class="bg-white p-2 rounded border border-slate-200/60">
-                            <span class="text-slate-400 block text-[11px]">ส่วนสูง / น้ำหนัก</span>
-                            <span class="font-medium text-slate-700">156 ซม. / 55 กก.</span>
-                        </div>
-                        <div class="bg-white p-2 rounded border border-slate-200/60 col-span-2">
-                            <span class="text-slate-400 block text-[11px]">ภาระทางทหาร</span>
-                            <span class="font-medium text-slate-700">ได้รับการยกเว้น</span>
-                        </div>
-                        <div class="bg-white p-2 rounded border border-slate-200/60 col-span-2">
-                            <span class="text-slate-400 block text-[11px]">ยานพาหนะ</span>
-                            <span class="font-medium text-slate-700"><i class="fa-solid fa-motorcycle text-slate-500 mr-1"></i> จักรยานยนต์ (พร้อมขับขี่)</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Education -->
-                <section class="space-y-3 page-break">
-                    <h2 class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-graduation-cap text-brand-600"></i> ประวัติการศึกษา
-                    </h2>
-                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm space-y-1">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">ปวส. (ปีที่จบ 2565)</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">GPA 3.72</span>
-                        </div>
-                        <h3 class="font-semibold text-slate-800 text-sm pt-1">วิทยาลัยเทคโนโลยีบริหารธุรกิจพิษณุโลก</h3>
-                        <p class="text-xs text-slate-600">คณะบริหารธุรกิจ สาขาธุรกิจค้าปลีกสมัยใหม่</p>
-                    </div>
-                </section>
-
-                <!-- Skills -->
-                <section class="space-y-3 page-break">
-                    <h2 class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-gears text-brand-600"></i> ทักษะและความสามารถ
-                    </h2>
-                    
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">ด้านการตัดต่อสื่อ (Video Editing)</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Video Editing</span>
-                            <span class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Social Content Creation</span>
-                            <span class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Shorts/Reels/TikTok</span>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">ด้านข้อมูลและเอกสาร (Data & Admin)</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">GoSell System</span>
-                            <span class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Data Tracking</span>
-                            <span class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">ออกใบกำกับภาษี/ใบวางบิล</span>
-                        </div>
-                    </div>
-                </section>
-
-            </aside>
-
-            <!-- RIGHT COLUMN / WORK EXPERIENCE (8 Cols) -->
-            <div class="md:col-span-8 p-6 sm:p-8 space-y-6">
-                
-                <!-- About / Summary -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1.5 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-user-check text-brand-600"></i> ประวัติโดยย่อ (Professional Summary)
-                    </h2>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        บุคลากรที่มีความยืดหยุ่นและเรียนรู้ได้ไว มีประสบการณ์หลากหลาย ทั้งด้าน<span class="font-medium text-slate-800">การสร้างสรรค์และตัดต่อวิดีโอคอนเทนต์สำหรับโซเชียลมีเดีย</span>, <span class="font-medium text-slate-800">การบริหารจัดการและสรุปข้อมูล (Data)</span> รวมถึง<span class="font-medium text-slate-800">งานเอกสารคลังสินค้าและการเงินบัญชีเบื้องต้น</span> มุ่งมั่นทำงานอย่างละเอียดรอบคอบ พร้อมเรียนรู้สิ่งใหม่เพื่อสร้างประโยชน์และประสิทธิภาพสูงสุดให้กับองค์กร
-                    </p>
-                </section>
-
-                <!-- Experience Section -->
-                <section class="space-y-6">
-                    <h2 class="text-lg font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1.5 flex items-center gap-2">
-                        <i class="fa-solid fa-briefcase text-brand-600"></i> ประวัติการทำงาน (Work Experience)
-                    </h2>
-
-                    <div class="relative border-l-2 border-slate-200 ml-3 space-y-8 pl-5">
-                        
-                        <!-- Job 1 -->
-                        <div class="relative page-break">
-                            <div class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-brand-600 border-2 border-white"></div>
-                            
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                                <h3 class="text-base font-bold text-slate-800">Video Editor</h3>
-                                <span class="text-xs font-semibold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full w-fit">
-                                    2568 – ปัจจุบัน
-                                </span>
-                            </div>
-                            <p class="text-xs font-medium text-slate-500 mb-2">บริษัท ทำด้วยใจตั้งใจทำ จำกัด (กิจกรรมโรงพยาบาล/คลินิก)</p>
-                            
-                            <ul class="list-disc list-outside text-xs sm:text-sm text-slate-600 space-y-1.5 ml-4">
-                                <li>ตัดต่อคลิปวิดีโอจากฟุตเทจที่ได้รับจากโรงพยาบาล เพื่อสร้างสรรค์คลิปที่มีคุณภาพสำหรับการนำเสนอในช่องทางต่างๆ</li>
-                                <li>สร้างคลิปวิดีโอสำหรับโพสต์บนโซเชียลมีเดีย เช่น Facebook, Instagram, TikTok และ YouTube เพื่อโปรโมทกิจกรรมและบริการของโรงพยาบาล</li>
-                                <li>ตรวจสอบและปรับแต่งคลิปวิดีโอให้มีความน่าสนใจและตรงตามมาตรฐานคุณภาพ ก่อนที่จะเผยแพร่บนแพลตฟอร์มต่างๆ</li>
-                                <li>Digital Marketing / Ads Support แยก Lead จาก Meta และจัดทำรายงาน Facebook Ads, Inbox, LINE</li>
-                                <li>Marketing Coordinator / Project Coordinator ตามงานทีม Outsource และทีม Back Office ประสานงานหลายฝ่าย</li>
-                                <li>Asset หรือ Office Administrator ควบคุมการเบิกจ่ายอุปกรณ์อิเล็กทรอนิกส์และอุปกรณ์สำนักงาน</li>
-                                <li>System/Ticket Coordinator เปิด–ปิด Ticket ในระบบ Zwiz ให้ทีม Sales</li>
-                                <li>ดูแลไลน์เซอวิสแคร์</li>
-                            </ul>
-                        </div>
-
-                        <!-- Job 2 -->
-                        <div class="relative page-break">
-                            <div class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white"></div>
-                            
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                                <h3 class="text-base font-bold text-slate-800">เจ้าหน้าที่ฝ่ายข้อมูล (Data)</h3>
-                                <span class="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full w-fit">
-                                    มีนาคม 2568 – กันยายน 2568
-                                </span>
-                            </div>
-                            <p class="text-xs font-medium text-slate-500 mb-2">บริษัท พีเอ็น อินฟินิตี้ จำกัด (DATA)</p>
-                            
-                            <ul class="list-disc list-outside text-xs sm:text-sm text-slate-600 space-y-1.5 ml-4">
-                                <li>สรุปรายงานสายโทรของเทเลเซลล์ เช็กลิสต์ข้อมูลการโทร ตรวจสอบจำนวนสายที่โทรออกในระบบเทียบกับข้อมูลที่เทเลเซลล์รายงาน</li>
-                                <li>ดึงออเดอร์ในระบบ Gosell เพื่ออัปเดตคำสั่งซื้อให้เป็นปัจจุบันอย่างสม่ำเสมอ</li>
-                                <li>จัดเก็บข้อมูลต่าง ๆ และเก็บเบอร์ พร้อมอัปเดตวันนัดให้ตรงลูปของคำสั่งซื้อ</li>
-                                <li>จัดเตรียมเบอร์และกระจายแจกเบอร์ให้แก่ทีมเทเลเซลล์</li>
-                            </ul>
-                        </div>
-
-                        <!-- Job 3 -->
-                        <div class="relative page-break">
-                            <div class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white"></div>
-                            
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                                <h3 class="text-base font-bold text-slate-800">Customer service</h3>
-                                <span class="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full w-fit">
-                                    พฤษภาคม 2567 – กุมภาพันธ์ 2568
-                                </span>
-                            </div>
-                            <p class="text-xs font-medium text-slate-500 mb-2">บริษัท ชันซี พลาสติก พี เอส จำกัด</p>
-                            
-                            <ul class="list-disc list-outside text-xs sm:text-sm text-slate-600 space-y-1.5 ml-4">
-                                <li>จัดทำเอกสารที่เกี่ยวข้อง เช่น ใบสั่งซื้อ, ใบสั่งขาย, ใบเสนอราคา และเอกสารส่งออก</li>
-                                <li>ติดตามสถานะการสั่งซื้อและการส่งมอบสินค้า พร้อมประสานงานเอกสารการจัดส่งสินค้าและบริการ</li>
-                                <li>จัดเก็บข้อมูลลูกค้า ออกใบกำกับภาษี, ใบเสร็จรับเงิน และใบวางบิล</li>
-                                <li>ตรวจสอบความถูกต้องของข้อมูลเอกสารทางการเงินและประสานงานกับแผนกที่เกี่ยวข้องเพื่อให้การดำเนินงานเป็นไปอย่างราบรื่น</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Strengths / Soft Skills -->
-                <section class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 page-break">
-                    <h3 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-1.5">
-                        <i class="fa-solid fa-star text-amber-500"></i> จุดเด่นและลักษณะการทำงาน
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i>
-                            <span>รอบคอบ แม่นยำเรื่องเอกสารและตัวเลข</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i>
-                            <span>ประสานงานกับทีมได้อย่างมีประสิทธิภาพ</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i>
-                            <span>ปรับตัวและเรียนรู้ระบบใหม่ๆ ได้เร็ว</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-500"></i>
-                            <span>มีความคิดสร้างสรรค์ในการทำวิดีโอ</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Portfolio Section / Google Drive Video -->
-                <section class="space-y-3 page-break">
-                    <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider border-b-2 border-brand-500 pb-1.5">
-                        <i class="fa-solid fa-photo-film text-brand-600"></i> ตัวอย่างผลงาน (Portfolio)
-                    </h3>
-                    <p class="text-xs text-slate-500 mb-2">ตัวอย่างวิดีโอผลงานการตัดต่อที่บันทึกไว้ใน Google Drive</p>
-                    <div class="w-full aspect-video rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-black">
-                        <iframe 
-                            src="https://drive.google.com/file/d/1CzSOhRs0JYEtPKb4pD5oz6oJNA1HqFrG/preview" 
-                            class="w-full h-full" 
-                            allow="autoplay" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </section>
-            </div>
+    <main
+      class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200/80 print-container"
+    >
+      <!-- Header Banner -->
+      <header class="gradient-header text-white p-6 sm:p-8">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+        >
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-wide">
+              ชนัญชิดา แก้วเขียว
+            </h1>
+            <p class="text-blue-100 text-lg font-light mt-1 font-heading">
+              Chananchida Keaokhiao
+            </p>
+          </div>
         </div>
+      </header>
 
-        <!-- Footer / Print Notice -->
-        <footer class="bg-slate-100 px-6 py-3 border-t border-slate-200 text-center text-xs text-slate-500">
-            <span>ชนัญชิดา แก้วเขียว — Resume Document</span>
-        </footer>
+      <!-- Main Content Layout Grid -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-slate-200"
+      >
+        <!-- LEFT COLUMN / SIDEBAR (4 Cols) -->
+        <aside class="md:col-span-4 bg-slate-50/70 p-6 space-y-6">
+          <!-- Contact Info -->
+          <section class="space-y-3">
+            <h2
+              class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-address-book text-brand-600"></i>
+              ข้อมูลการติดต่อ
+            </h2>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-phone text-brand-600 mt-1 w-4"></i>
+                <a href="tel:0990151407" class="hover:text-brand-600 transition"
+                  >099-015-1407</a
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-envelope text-brand-600 mt-1 w-4"></i>
+                <a
+                  href="mailto:Chananchidaplam1@gmail.com"
+                  class="hover:text-brand-600 break-all transition"
+                  >Chananchidaplam1@gmail.com</a
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-location-dot text-brand-600 mt-1 w-4"></i>
+                <span
+                  >98/18 หมู่ 5 ต.พลายชุมพล อ.เมืองพิษณุโลก จ.พิษณุโลก
+                  65000</span
+                >
+              </li>
+            </ul>
+          </section>
 
+          <!-- Personal Details -->
+          <section class="space-y-3 page-break">
+            <h2
+              class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-user text-brand-600"></i> ข้อมูลส่วนตัว
+            </h2>
+            <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
+              <div class="bg-white p-2 rounded border border-slate-200/60">
+                <span class="text-slate-400 block text-[11px]">วันเกิด</span>
+                <span class="font-medium text-slate-700">22 ต.ค. 2545</span>
+              </div>
+              <div class="bg-white p-2 rounded border border-slate-200/60">
+                <span class="text-slate-400 block text-[11px]">อายุ</span>
+                <span class="font-medium text-slate-700">24 ปี</span>
+              </div>
+              <div class="bg-white p-2 rounded border border-slate-200/60">
+                <span class="text-slate-400 block text-[11px]"
+                  >สัญชาติ / ศาสนา</span
+                >
+                <span class="font-medium text-slate-700">ไทย / พุทธ</span>
+              </div>
+              <div class="bg-white p-2 rounded border border-slate-200/60">
+                <span class="text-slate-400 block text-[11px]"
+                  >ส่วนสูง / น้ำหนัก</span
+                >
+                <span class="font-medium text-slate-700">156 ซม. / 55 กก.</span>
+              </div>
+              <div
+                class="bg-white p-2 rounded border border-slate-200/60 col-span-2"
+              >
+                <span class="text-slate-400 block text-[11px]"
+                  >ภาระทางทหาร</span
+                >
+                <span class="font-medium text-slate-700">ได้รับการยกเว้น</span>
+              </div>
+              <div
+                class="bg-white p-2 rounded border border-slate-200/60 col-span-2"
+              >
+                <span class="text-slate-400 block text-[11px]">ยานพาหนะ</span>
+                <span class="font-medium text-slate-700"
+                  ><i class="fa-solid fa-motorcycle text-slate-500 mr-1"></i>
+                  จักรยานยนต์ (พร้อมขับขี่)</span
+                >
+              </div>
+            </div>
+          </section>
+
+          <!-- Education -->
+          <section class="space-y-3 page-break">
+            <h2
+              class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-graduation-cap text-brand-600"></i>
+              ประวัติการศึกษา
+            </h2>
+            <div
+              class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm space-y-1"
+            >
+              <div class="flex justify-between items-start">
+                <span
+                  class="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded"
+                  >ปวส. (ปีที่จบ 2565)</span
+                >
+                <span
+                  class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded"
+                  >GPA 3.72</span
+                >
+              </div>
+              <h3 class="font-semibold text-slate-800 text-sm pt-1">
+                วิทยาลัยเทคโนโลยีบริหารธุรกิจพิษณุโลก
+              </h3>
+              <p class="text-xs text-slate-600">
+                คณะบริหารธุรกิจ สาขาธุรกิจค้าปลีกสมัยใหม่
+              </p>
+            </div>
+          </section>
+
+          <!-- Skills -->
+          <section class="space-y-3 page-break">
+            <h2
+              class="text-base font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-gears text-brand-600"></i>
+              ทักษะและความสามารถ
+            </h2>
+
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-slate-700">
+                ด้านการตัดต่อสื่อ (Video Editing)
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium"
+                  >Video Editing</span
+                >
+                <span
+                  class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium"
+                  >Social Content Creation</span
+                >
+                <span
+                  class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium"
+                  >Shorts/Reels/TikTok</span
+                >
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-slate-700">
+                ด้านข้อมูลและเอกสาร (Data & Admin)
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium"
+                  >GoSell System</span
+                >
+                <span
+                  class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium"
+                  >Data Tracking</span
+                >
+                <span
+                  class="text-xs bg-white text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium"
+                  >ออกใบกำกับภาษี/ใบวางบิล</span
+                >
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <!-- RIGHT COLUMN / WORK EXPERIENCE (8 Cols) -->
+        <div class="md:col-span-8 p-6 sm:p-8 space-y-6">
+          <!-- About / Summary -->
+          <section>
+            <h2
+              class="text-lg font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1.5 mb-3 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-user-check text-brand-600"></i>
+              ประวัติโดยย่อ (Professional Summary)
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              บุคลากรที่มีความยืดหยุ่นและเรียนรู้ได้ไว มีประสบการณ์หลากหลาย
+              ทั้งด้าน<span class="font-medium text-slate-800"
+                >การสร้างสรรค์และตัดต่อวิดีโอคอนเทนต์สำหรับโซเชียลมีเดีย</span
+              >,
+              <span class="font-medium text-slate-800"
+                >การบริหารจัดการและสรุปข้อมูล (Data)</span
+              >
+              รวมถึง<span class="font-medium text-slate-800"
+                >งานเอกสารคลังสินค้าและการเงินบัญชีเบื้องต้น</span
+              >
+              มุ่งมั่นทำงานอย่างละเอียดรอบคอบ
+              พร้อมเรียนรู้สิ่งใหม่เพื่อสร้างประโยชน์และประสิทธิภาพสูงสุดให้กับองค์กร
+            </p>
+          </section>
+
+          <!-- Experience Section -->
+          <section class="space-y-6">
+            <h2
+              class="text-lg font-bold text-slate-800 uppercase tracking-wider border-b-2 border-brand-500 pb-1.5 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-briefcase text-brand-600"></i>
+              ประวัติการทำงาน (Work Experience)
+            </h2>
+
+            <div
+              class="relative border-l-2 border-slate-200 ml-3 space-y-8 pl-5"
+            >
+              <!-- Job 1 -->
+              <div class="relative page-break">
+                <div
+                  class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-brand-600 border-2 border-white"
+                ></div>
+
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center justify-between gap-1"
+                >
+                  <h3 class="text-base font-bold text-slate-800">
+                    Video Editor
+                  </h3>
+                  <span
+                    class="text-xs font-semibold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full w-fit"
+                  >
+                    2568 – ปัจจุบัน
+                  </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 mb-2">
+                  บริษัท ทำด้วยใจตั้งใจทำ จำกัด (กิจกรรมโรงพยาบาล/คลินิก)
+                </p>
+
+                <ul
+                  class="list-disc list-outside text-xs sm:text-sm text-slate-600 space-y-1.5 ml-4"
+                >
+                  <li>
+                    ตัดต่อคลิปวิดีโอจากฟุตเทจที่ได้รับจากโรงพยาบาล
+                    เพื่อสร้างสรรค์คลิปที่มีคุณภาพสำหรับการนำเสนอในช่องทางต่างๆ
+                  </li>
+                  <li>
+                    สร้างคลิปวิดีโอสำหรับโพสต์บนโซเชียลมีเดีย เช่น Facebook,
+                    Instagram, TikTok และ YouTube
+                    เพื่อโปรโมทกิจกรรมและบริการของโรงพยาบาล
+                  </li>
+                  <li>
+                    ตรวจสอบและปรับแต่งคลิปวิดีโอให้มีความน่าสนใจและตรงตามมาตรฐานคุณภาพ
+                    ก่อนที่จะเผยแพร่บนแพลตฟอร์มต่างๆ
+                  </li>
+                  <li>
+                    Digital Marketing / Ads Support แยก Lead จาก Meta
+                    และจัดทำรายงาน Facebook Ads, Inbox, LINE
+                  </li>
+                  <li>
+                    Marketing Coordinator / Project Coordinator ตามงานทีม
+                    Outsource และทีม Back Office ประสานงานหลายฝ่าย
+                  </li>
+                  <li>
+                    Asset หรือ Office Administrator
+                    ควบคุมการเบิกจ่ายอุปกรณ์อิเล็กทรอนิกส์และอุปกรณ์สำนักงาน
+                  </li>
+                  <li>
+                    System/Ticket Coordinator เปิด–ปิด Ticket ในระบบ Zwiz ให้ทีม
+                    Sales
+                  </li>
+                  <li>ดูแลไลน์เซอวิสแคร์</li>
+                </ul>
+              </div>
+
+              <!-- Job 2 -->
+              <div class="relative page-break">
+                <div
+                  class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white"
+                ></div>
+
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center justify-between gap-1"
+                >
+                  <h3 class="text-base font-bold text-slate-800">
+                    เจ้าหน้าที่ฝ่ายข้อมูล (Data)
+                  </h3>
+                  <span
+                    class="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full w-fit"
+                  >
+                    มีนาคม 2568 – กันยายน 2568
+                  </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 mb-2">
+                  บริษัท พีเอ็น อินฟินิตี้ จำกัด (DATA)
+                </p>
+
+                <ul
+                  class="list-disc list-outside text-xs sm:text-sm text-slate-600 space-y-1.5 ml-4"
+                >
+                  <li>
+                    สรุปรายงานสายโทรของเทเลเซลล์ เช็กลิสต์ข้อมูลการโทร
+                    ตรวจสอบจำนวนสายที่โทรออกในระบบเทียบกับข้อมูลที่เทเลเซลล์รายงาน
+                  </li>
+                  <li>
+                    ดึงออเดอร์ในระบบ Gosell
+                    เพื่ออัปเดตคำสั่งซื้อให้เป็นปัจจุบันอย่างสม่ำเสมอ
+                  </li>
+                  <li>
+                    จัดเก็บข้อมูลต่าง ๆ และเก็บเบอร์
+                    พร้อมอัปเดตวันนัดให้ตรงลูปของคำสั่งซื้อ
+                  </li>
+                  <li>จัดเตรียมเบอร์และกระจายแจกเบอร์ให้แก่ทีมเทเลเซลล์</li>
+                </ul>
+              </div>
+
+              <!-- Job 3 -->
+              <div class="relative page-break">
+                <div
+                  class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white"
+                ></div>
+
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center justify-between gap-1"
+                >
+                  <h3 class="text-base font-bold text-slate-800">
+                    Customer service
+                  </h3>
+                  <span
+                    class="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full w-fit"
+                  >
+                    พฤษภาคม 2567 – กุมภาพันธ์ 2568
+                  </span>
+                </div>
+                <p class="text-xs font-medium text-slate-500 mb-2">
+                  บริษัท ชันซี พลาสติก พี เอส จำกัด
+                </p>
+
+                <ul
+                  class="list-disc list-outside text-xs sm:text-sm text-slate-600 space-y-1.5 ml-4"
+                >
+                  <li>
+                    จัดทำเอกสารที่เกี่ยวข้อง เช่น ใบสั่งซื้อ, ใบสั่งขาย,
+                    ใบเสนอราคา และเอกสารส่งออก
+                  </li>
+                  <li>
+                    ติดตามสถานะการสั่งซื้อและการส่งมอบสินค้า
+                    พร้อมประสานงานเอกสารการจัดส่งสินค้าและบริการ
+                  </li>
+                  <li>
+                    จัดเก็บข้อมูลลูกค้า ออกใบกำกับภาษี, ใบเสร็จรับเงิน
+                    และใบวางบิล
+                  </li>
+                  <li>
+                    ตรวจสอบความถูกต้องของข้อมูลเอกสารทางการเงินและประสานงานกับแผนกที่เกี่ยวข้องเพื่อให้การดำเนินงานเป็นไปอย่างราบรื่น
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Strengths / Soft Skills -->
+          <section
+            class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 page-break"
+          >
+            <h3
+              class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-1.5"
+            >
+              <i class="fa-solid fa-star text-amber-500"></i>
+              จุดเด่นและลักษณะการทำงาน
+            </h3>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600"
+            >
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-emerald-500"></i>
+                <span>รอบคอบ แม่นยำเรื่องเอกสารและตัวเลข</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-emerald-500"></i>
+                <span>ประสานงานกับทีมได้อย่างมีประสิทธิภาพ</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-emerald-500"></i>
+                <span>ปรับตัวและเรียนรู้ระบบใหม่ๆ ได้เร็ว</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-emerald-500"></i>
+                <span>มีความคิดสร้างสรรค์ในการทำวิดีโอ</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Portfolio Section / Google Drive Video -->
+          <section class="space-y-3 page-break">
+            <h3
+              class="text-sm font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider border-b-2 border-brand-500 pb-1.5"
+            >
+              <i class="fa-solid fa-photo-film text-brand-600"></i>
+              ตัวอย่างผลงาน (Portfolio)
+            </h3>
+            <p class="text-xs text-slate-500 mb-2">
+              ตัวอย่างวิดีโอผลงานการตัดต่อ
+            </p>
+            <div class="relative w-full max-w-4xl mx-auto">
+              <!-- Carousel Track -->
+              <div
+                id="video-carousel"
+                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth rounded-xl border border-slate-200 shadow-sm bg-black no-scrollbar"
+              >
+                <!-- Video 1 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CzSOhRs0JYEtPKb4pD5oz6oJNA1HqFrG/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/1C-4JdPdJQJXZ95FaNS9nOQ4qhDPvgq2d/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/1aYUY4QLtyTRoktRPwyCVTfYAlUjZiXhg/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/1kVQptXw5KlUAgXhRU1irgVPvDmJ9QMYZ/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/1nMJ-3GcuDBppD7bP0uafVAb3tCwLrkEd/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <!-- Video 6 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/1O_zL1GTwkNx7_B8W_fcHmpfUOWaiQ0gZ/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <!-- Video 7 -->
+                <div class="w-full flex-shrink-0 snap-center aspect-video">
+                  <iframe
+                    src="https://drive.google.com/file/d/17ELYPefdk7P-F4sP8PcAWIRaHXjzm9X6/preview"
+                    class="w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+
+              <!-- Navigation Buttons -->
+              <button
+                onclick="scrollCarousel('prev')"
+                class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full shadow-md transition z-10 focus:outline-none"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  ></path>
+                </svg>
+              </button>
+              <button
+                onclick="scrollCarousel('next')"
+                class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full shadow-md transition z-10 focus:outline-none"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  ></path>
+                </svg>
+              </button>
+
+              <!-- Dots Indicator -->
+              <div class="flex justify-center space-x-2 mt-4">
+                <button
+                  onclick="goToSlide(0)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="0"
+                ></button>
+                <button
+                  onclick="goToSlide(1)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="1"
+                ></button>
+                <button
+                  onclick="goToSlide(2)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="2"
+                ></button>
+                <button
+                  onclick="goToSlide(3)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="3"
+                ></button>
+                <button
+                  onclick="goToSlide(4)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="4"
+                ></button>
+                <button
+                  onclick="goToSlide(5)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="5"
+                ></button>
+                <button
+                  onclick="goToSlide(6)"
+                  class="w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition dot-indicator"
+                  data-index="6"
+                ></button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Footer / Print Notice -->
+      <footer
+        class="bg-slate-100 px-6 py-3 border-t border-slate-200 text-center text-xs text-slate-500"
+      >
+        <span>ชนัญชิดา แก้วเขียว — Resume Document</span>
+      </footer>
     </main>
+    <script>
+      const carousel = document.getElementById("video-carousel");
+      const dots = document.querySelectorAll(".dot-indicator");
 
-</body>
+      function scrollCarousel(direction) {
+        const slideWidth = carousel.clientWidth;
+        if (direction === "next") {
+          carousel.scrollBy({ left: slideWidth, behavior: "smooth" });
+        } else {
+          carousel.scrollBy({ left: -slideWidth, behavior: "smooth" });
+        }
+      }
+
+      function goToSlide(index) {
+        const slideWidth = carousel.clientWidth;
+        carousel.scrollTo({ left: slideWidth * index, behavior: "smooth" });
+      }
+
+      carousel.addEventListener("scroll", () => {
+        const slideWidth = carousel.clientWidth;
+        const index = Math.round(carousel.scrollLeft / slideWidth);
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add("bg-blue-600", "w-6");
+            dot.classList.remove("bg-slate-300", "w-3");
+          } else {
+            dot.classList.remove("bg-blue-600", "w-6");
+            dot.classList.add("bg-slate-300", "w-3");
+          }
+        });
+      });
+
+      if (dots.length > 0) {
+        dots[0].classList.add("bg-blue-600", "w-6");
+        dots[0].classList.remove("bg-slate-300", "w-3");
+      }
+    </script>
+  </body>
 </html>
